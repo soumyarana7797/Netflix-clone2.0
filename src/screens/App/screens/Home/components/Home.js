@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Navbar from './Navbar';
 
 const Home = () => {
   const [count, setCount] = useState(0);
@@ -11,9 +12,13 @@ const Home = () => {
 
   return (
     <>
-      <div>
-        <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>Click me</button>
+      <div className="homeScreen">
+        {/* Nav */}
+        <Navbar />
+
+        {/* Banner */}
+
+        {/* Row */}
       </div>
     </>
   );
