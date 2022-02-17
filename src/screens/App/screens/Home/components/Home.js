@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Banner from './Banner';
 import Navbar from './Navbar';
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
         <Navbar />
 
         {/* Banner */}
+        <Banner />
 
         {/* Row */}
       </div>

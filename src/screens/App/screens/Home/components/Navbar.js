@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
+  const [show, handleShow] = useState(false)
+
+  const transitionNavBar = () => {
+    if(window.scrollY > 100 ) {
+      handleShow(true)
+    }else {
+      handleShow(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", transitionNavBar)
+    return () => window.removeEventListener("scroll", transitionNavBar)
+  }, [])
+ 
   return (
-    <div className="navbar">
-      <img src="https://assets.brand.microsites.netflix.io/assets/7dc497e2-4975-11ec-a9ce-066b49664af6_cm_1440w.jpg?v=5" />
+    <div className={`nav ${show && 'nav_black'}`}>
+      <div className='nav_contents'>
+      <img className='nav_logo' src="https://www.freepnglogos.com/uploads/netflix-logo-0.png" />
 
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" />
-
-      <h3>Navbbar</h3>
+      <img className='nav_avatar' src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" />
+      </div>
     </div>
   );
 };
