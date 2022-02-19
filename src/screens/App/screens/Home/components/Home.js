@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Banner from './Banner';
 import Navbar from './Navbar';
+import Row from './Row';
 
 const Home = () => {
   const [count, setCount] = useState(0);
@@ -21,6 +22,12 @@ const Home = () => {
         <Banner />
 
         {/* Row */}
+
+        <Row
+          title="NETFLIX_ORIGINALS"
+          fetchMethod="fetchNetflixOriginals"
+          isLargeRow
+        />
       </div>
     </>
   );

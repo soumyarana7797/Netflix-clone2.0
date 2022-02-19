@@ -20,3 +20,13 @@ export const getBlogDetails = async ({ id }) => {
     throw new Error(error);
   }
 };
+
+export const getNetflixOriginals = async () => {
+  try {
+    const response = await axios.get(apiURL.FETCH_NETFLIX_ORIGINALS);
+    return response.data;
+  } catch (error) {
+    error.handleGlobally && error.handleGlobally();
+    throw new Error(error);
+  }
+};

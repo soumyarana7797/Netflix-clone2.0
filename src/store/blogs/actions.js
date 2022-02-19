@@ -5,6 +5,9 @@ import {
   FETCH_BLOG_DETAILS,
   FETCH_BLOG_DETAILS_SUCCESS,
   FETCH_BLOG_DETAILS_ERROR,
+  FETCH_NETFLIX_ORIGINALS,
+  FETCH_NETFLIX_ORIGINALS_SUCCESS,
+  FETCH_NETFLIX_ORIGINALS_ERROR,
 } from 'store/actionTypes';
 
 export const fetchBlogs = () => ({
@@ -18,6 +21,22 @@ export const fetchBlogsSuccess = (data) => ({
 
 export const fetchBlogsError = (message) => ({
   type: FETCH_BLOGS_ERROR,
+  payload: message,
+});
+
+// Fetch Netflix Home Screen Rows (Different types of movies)
+
+export const fetchNetflixOriginals = () => ({
+  type: FETCH_NETFLIX_ORIGINALS,
+});
+
+export const fetchNetflixOriginalsSuccess = (data) => ({
+  type: FETCH_NETFLIX_ORIGINALS_SUCCESS,
+  payload: data,
+});
+
+export const fetchNetflixOriginalsError = (message) => ({
+  type: FETCH_NETFLIX_ORIGINALS_ERROR,
   payload: message,
 });
 

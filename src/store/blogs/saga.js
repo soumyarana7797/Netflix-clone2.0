@@ -1,13 +1,19 @@
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
-import { getBlogDetails, getBlogs } from 'services';
+import { getBlogDetails, getBlogs, getNetflixOriginals } from 'services';
 
 import {
   fetchBlogsSuccess,
   fetchBlogsError,
   fetchBlogDetailsSuccess,
   fetchBlogDetailsError,
+  fetchNetflixOriginalsSuccess,
+  fetchNetflixOriginalsError,
 } from 'store/actions';
-import { FETCH_BLOGS, FETCH_BLOG_DETAILS } from 'store/actionTypes';
+import {
+  FETCH_BLOGS,
+  FETCH_BLOG_DETAILS,
+  FETCH_NETFLIX_ORIGINALS,
+} from 'store/actionTypes';
 
 function* fetchBlogs() {
   try {
@@ -24,6 +30,24 @@ function* fetchBlogs() {
 
 export function* watchFetchBlogs() {
   yield takeLatest(FETCH_BLOGS, fetchBlogs);
+}
+
+//NETFLIX_ORIGINALS
+function* fetchNetflixOriginals() {
+  try {
+    const userObj = yield call(getNetflixOriginals);
+    if (!userObj.message) {
+      yield put(fetchNetflixOriginalsSuccess(userObj));
+    } else {
+      yield put(fetchBlogsError(userObj));
+    }
+  } catch (error) {
+    yield put(fetchNetflixOriginalsError(error));
+  }
+}
+
+export function* watchFetchNetflixOriginals() {
+  yield takeLatest(FETCH_NETFLIX_ORIGINALS, fetchNetflixOriginals);
 }
 
 function* fetchBlogDetails({ payload }) {
@@ -44,5 +68,9 @@ export function* watchFetchBlogDetails() {
 }
 
 export default function* rootSaga() {
-  yield all([fork(watchFetchBlogs), fork(watchFetchBlogDetails)]);
+  yield all([
+    fork(watchFetchBlogs),
+    fork(watchFetchBlogDetails),
+    fork(watchFetchNetflixOriginals),
+  ]);
 }

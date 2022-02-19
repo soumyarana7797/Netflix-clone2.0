@@ -5,6 +5,9 @@ import {
   FETCH_BLOG_DETAILS,
   FETCH_BLOG_DETAILS_SUCCESS,
   FETCH_BLOG_DETAILS_ERROR,
+  FETCH_NETFLIX_ORIGINALS,
+  FETCH_NETFLIX_ORIGINALS_SUCCESS,
+  FETCH_NETFLIX_ORIGINALS_ERROR,
 } from '../actionTypes';
 
 const INIT_STATE = {
@@ -12,6 +15,7 @@ const INIT_STATE = {
   loading: false,
   blogData: {},
   blogDetails: null,
+  rowMovies: {},
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -30,6 +34,26 @@ const reducer = (state = INIT_STATE, action) => {
         error: '',
       };
     case FETCH_BLOGS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.message,
+      };
+    //FETCH NETFLIX ORIGINALS
+    case FETCH_NETFLIX_ORIGINALS:
+      return {
+        ...state,
+        loading: true,
+        error: '',
+      };
+    case FETCH_NETFLIX_ORIGINALS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        rowMovies: { ...action.payload },
+        error: '',
+      };
+    case FETCH_NETFLIX_ORIGINALS_ERROR:
       return {
         ...state,
         loading: false,
