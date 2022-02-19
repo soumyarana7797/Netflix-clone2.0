@@ -16,8 +16,16 @@ const Banner = () => {
   // useEffect(() => {
   //   setBlogData(blogList);
   // }, [blogList]);
+  let bannerMovie;
 
-  console.log('blogList: ', blogList);
+  if (blogList.results) {
+    console.log(
+      'blogList: ',
+      blogList.results[Math.floor(Math.random() * blogList.results.length - 1)]
+    );
+    bannerMovie =
+      blogList.results[Math.floor(Math.random() * blogList.results.length - 1)];
+  }
 
   // console.log('blogList: ', blogData);
   // For truncating string
@@ -31,22 +39,21 @@ const Banner = () => {
       style={{
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
-        backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_flag.svg/1200px-Black_flag.svg.png")`,
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${bannerMovie?.backdrop_path}")`,
       }}
     >
       <div className="banner_contents">
-        <h1 className="banner_title">Movie Name</h1>
+        <h1 className="banner_title">
+          {bannerMovie?.title ||
+            bannerMovie?.name ||
+            bannerMovie?.original_name}
+        </h1>
         <div className="banner_buttons">
           <button className="banner_button">Play</button>
           <button className="banner_button">My List</button>
         </div>
         <h1 className="banner_description">
-          {blogList && (
-            // blogList.results.map((blog) => {
-            //   <p>blog.original_title</p>;
-            // })
-            <p>{blogList.total_results}</p>
-          )}
+          {truncate(bannerMovie?.overview, 150)}
         </h1>
       </div>
       <div className="banner_fadeBottom"></div>
