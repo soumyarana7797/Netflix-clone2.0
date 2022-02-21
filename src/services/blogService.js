@@ -30,3 +30,23 @@ export const getNetflixOriginals = async () => {
     throw new Error(error);
   }
 };
+
+export const getTrendingMovies = async () => {
+  try {
+    const response = await axios.get(apiURL.FETCH_TRENDING);
+    return response.data;
+  } catch (error) {
+    error.handleGlobally && error.handleGlobally();
+    throw new Error(error);
+  }
+};
+
+export const getTopRated = async () => {
+  try {
+    const response = await axios.get(apiURL.FETCH_TOP_RATED);
+    return response.data;
+  } catch (error) {
+    error.handleGlobally && error.handleGlobally();
+    throw new Error(error);
+  }
+};

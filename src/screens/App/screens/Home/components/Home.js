@@ -28,6 +28,8 @@ const Home = () => {
           fetchMethod="fetchNetflixOriginals"
           isLargeRow
         />
+        <Row title="TRENDING MOVIES" fetchMethod="fetchTrendingMovies" />
+        <Row title="TOP RATED MOVIES" fetchMethod="fetchTopRated" />
       </div>
     </>
   );

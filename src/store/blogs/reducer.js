@@ -8,6 +8,12 @@ import {
   FETCH_NETFLIX_ORIGINALS,
   FETCH_NETFLIX_ORIGINALS_SUCCESS,
   FETCH_NETFLIX_ORIGINALS_ERROR,
+  FETCH_TRENDING_MOVIES,
+  FETCH_TRENDING_MOVIES_SUCCESS,
+  FETCH_TRENDING_MOVIES_ERROR,
+  FETCH_TOP_RATED,
+  FETCH_TOP_RATED_SUCCESS,
+  FETCH_TOP_RATED_ERROR,
 } from '../actionTypes';
 
 const INIT_STATE = {
@@ -59,6 +65,48 @@ const reducer = (state = INIT_STATE, action) => {
         loading: false,
         error: action.payload.message,
       };
+
+    //FETCH NETFLIX TRENDING
+    case FETCH_TRENDING_MOVIES:
+      return {
+        ...state,
+        loading: true,
+        error: '',
+      };
+    case FETCH_TRENDING_MOVIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        rowMovies: { ...action.payload },
+        error: '',
+      };
+    case FETCH_TRENDING_MOVIES_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.message,
+      };
+    //FETCH FETCH_TOP_RATED
+    case FETCH_TOP_RATED:
+      return {
+        ...state,
+        loading: true,
+        error: '',
+      };
+    case FETCH_TOP_RATED_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        rowMovies: { ...action.payload },
+        error: '',
+      };
+    case FETCH_TOP_RATED_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.message,
+      };
+
     case FETCH_BLOG_DETAILS:
       return {
         ...state,

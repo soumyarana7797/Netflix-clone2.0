@@ -16,7 +16,7 @@ export const BLOG_URL = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&langua
 
 export const FETCH_TRENDING = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`;
 export const FETCH_NETFLIX_ORIGINALS = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_network=213`;
-export const fetchTopRated = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US`;
+export const FETCH_TOP_RATED = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US`;
 export const fetActionMovies = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=28`;
 export const fetchComedyMovie = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=35`;
 export const fetchHorrorMovie = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=27`;
