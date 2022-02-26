@@ -13,25 +13,30 @@ const Home = () => {
   });
 
   return (
-    <>
-      <div className="homeScreen">
-        {/* Nav */}
-        <Navbar />
+    // <>
+    <div className="homeScreen">
+      {/* Nav */}
+      <Navbar />
 
-        {/* Banner */}
-        <Banner />
+      {/* Banner */}
+      <Banner />
 
-        {/* Row */}
+      {/* Row */}
 
-        <Row
-          title="NETFLIX_ORIGINALS"
-          fetchMethod="fetchNetflixOriginals"
-          isLargeRow
-        />
-        <Row title="TRENDING MOVIES" fetchMethod="fetchTrendingMovies" />
-        <Row title="TOP RATED MOVIES" fetchMethod="fetchTopRated" />
-      </div>
-    </>
+      <Row
+        title="NETFLIX_ORIGINALS"
+        fetchMethod="fetchNetflixOriginals"
+        isLargeRow
+      />
+      <Row title="TRENDING MOVIES" fetchMethod="fetchTrendingMovies" />
+      <Row title="TOP RATED MOVIES" fetchMethod="fetchTopRated" />
+      <Row title="ACTION MOVIES" fetchMethod="fetchActionMovies" />
+      <Row title="COMEDY MOVIES" fetchMethod="fetchComedyMovies" />
+      <Row title="HORROR MOVIES" fetchMethod="fetchHorrorMovies" />
+      <Row title="TOP ROMANTIC MOVIES" fetchMethod="fetchRomanticMovies" />
+      <Row title="DOCUMENTARY MOVIES" fetchMethod="fetchDocumentaryMovies" />
+    </div>
+    // </>
   );
 };
 

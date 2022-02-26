@@ -5,6 +5,11 @@ import {
   getNetflixOriginals,
   getTrendingMovies,
   getTopRated,
+  getActionMovies,
+  getComedyMovies,
+  getHorrorMovies,
+  getRomanticMovies,
+  getDocumentaryMovies,
 } from 'services';
 
 import {
@@ -18,6 +23,16 @@ import {
   fetchTrendingMoviesError,
   fetchTopRatedSuccess,
   fetchTopRatedError,
+  fetchActionMoviesSuccess,
+  fetchActionMoviesError,
+  fetchComedyMoviesSuccess,
+  fetchComedyMoviesError,
+  fetchHorrorMoviesSuccess,
+  fetchHorrorMoviesError,
+  fetchRomanticMoviesSuccess,
+  fetchRomanticMoviesError,
+  fetchDocumentaryMoviesSuccess,
+  fetchDocumentaryMoviesError,
 } from 'store/actions';
 import {
   FETCH_BLOGS,
@@ -25,6 +40,11 @@ import {
   FETCH_NETFLIX_ORIGINALS,
   FETCH_TRENDING_MOVIES,
   FETCH_TOP_RATED,
+  FETCH_ACTION_MOVIES,
+  FETCH_COMEDY_MOVIES,
+  FETCH_HORROR_MOVIES,
+  FETCH_ROMANTIC_MOVIES,
+  FETCH_DOCUMENTARY_MOVIES,
 } from 'store/actionTypes';
 
 function* fetchBlogs() {
@@ -81,7 +101,7 @@ export function* watchFetchTrendingMovies() {
 }
 
 //TOP_RATED
-function* fetchTopRated() {
+function* fetchTopRated(action) {
   try {
     const userObj = yield call(getTopRated);
     if (!userObj.message) {
@@ -96,6 +116,96 @@ function* fetchTopRated() {
 
 export function* watchFetchTopRated() {
   yield takeLatest(FETCH_TOP_RATED, fetchTopRated);
+}
+
+//FETCH_ACTION_MOVIES
+function* fetchActionMovies(action) {
+  try {
+    const userObj = yield call(getActionMovies);
+    if (!userObj.message) {
+      yield put(fetchActionMoviesSuccess(userObj));
+    } else {
+      yield put(fetchActionMoviesError(userObj));
+    }
+  } catch (error) {
+    yield put(fetchActionMoviesError(error));
+  }
+}
+
+export function* watchFetchActionMovies() {
+  yield takeLatest(FETCH_ACTION_MOVIES, fetchActionMovies);
+}
+
+//FETCH_COMEDY_MOVIES
+function* fetchComedyMovies(action) {
+  try {
+    const userObj = yield call(getComedyMovies);
+    if (!userObj.message) {
+      yield put(fetchComedyMoviesSuccess(userObj));
+    } else {
+      yield put(fetchComedyMoviesError(userObj));
+    }
+  } catch (error) {
+    yield put(fetchComedyMoviesError(error));
+  }
+}
+
+export function* watchFetchComedyMovies() {
+  yield takeLatest(FETCH_COMEDY_MOVIES, fetchComedyMovies);
+}
+
+//FETCH_HORROR_MOVIES
+function* fetchHorrorMovies(action) {
+  try {
+    const userObj = yield call(getHorrorMovies);
+    if (!userObj.message) {
+      yield put(fetchHorrorMoviesSuccess(userObj));
+    } else {
+      yield put(fetchHorrorMoviesError(userObj));
+    }
+  } catch (error) {
+    yield put(fetchHorrorMoviesError(error));
+  }
+}
+
+export function* watchFetchHorrorMovies() {
+  yield takeLatest(FETCH_HORROR_MOVIES, fetchHorrorMovies);
+}
+
+//FETCH_ROMANTIC_MOVIES
+function* fetchRomanticMovies(action) {
+  try {
+    const userObj = yield call(getRomanticMovies);
+    if (!userObj.message) {
+      yield put(fetchRomanticMoviesSuccess(userObj));
+    } else {
+      yield put(fetchRomanticMoviesError(userObj));
+    }
+  } catch (error) {
+    yield put(fetchRomanticMoviesError(error));
+  }
+}
+
+export function* watchFetchRomanticMovies() {
+  yield takeLatest(FETCH_ROMANTIC_MOVIES, fetchRomanticMovies);
+}
+
+//FETCH_DOCUMENTARY_MOVIES
+function* fetchDocumentaryMovies(action) {
+  try {
+    const userObj = yield call(getDocumentaryMovies);
+    if (!userObj.message) {
+      yield put(fetchDocumentaryMoviesSuccess(userObj));
+    } else {
+      yield put(fetchDocumentaryMoviesError(userObj));
+    }
+  } catch (error) {
+    yield put(fetchDocumentaryMoviesError(error));
+  }
+}
+
+export function* watchFetchDocumentaryMovies() {
+  yield takeLatest(FETCH_DOCUMENTARY_MOVIES, fetchDocumentaryMovies);
 }
 
 function* fetchBlogDetails({ payload }) {
@@ -122,5 +232,10 @@ export default function* rootSaga() {
     fork(watchFetchNetflixOriginals),
     fork(watchFetchTrendingMovies),
     fork(watchFetchTopRated),
+    fork(watchFetchComedyMovies),
+    fork(watchFetchActionMovies),
+    fork(watchFetchHorrorMovies),
+    fork(watchFetchRomanticMovies),
+    fork(watchFetchDocumentaryMovies),
   ]);
 }
