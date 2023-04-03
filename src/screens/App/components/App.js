@@ -8,22 +8,35 @@ import routeList from 'shared/constants/routes';
 import { LazyLoader, RouteWithSubRoutes } from 'shared/components';
 
 function App() {
-  return (
-    <Switch>
-      <Route
-        exact
-        path="/"
-        element={<Navigate replace to={routeList.HOME.route} />}
-      />
-      {routes.map((route, i) => (
+  const [renderRoutes, changeRenderRoutes] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      changeRenderRoutes(true);
+      const script = document.createElement('script');
+      script.src = 'https://w.appzi.io/w.js?token=oRI25';
+      script.async = true;
+      document.body.appendChild(script);
+    }, 3000);
+  }, []);
+  return !renderRoutes ? (
+    < LazyLoader />
+  )
+    : (
+      <Switch>
         <Route
-          path={route.path}
-          key={route.path}
-          element={<route.component />}
+          exact
+          path="/"
+          element={<Navigate replace to={routeList.HOME.route} />}
         />
-      ))}
-    </Switch>
-  );
+        {routes.map((route, i) => (
+          <Route
+            path={route.path}
+            key={route.path}
+            element={<route.component />}
+          />
+        ))}
+      </Switch>
+    );
 }
 
 export default App;

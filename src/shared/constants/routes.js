@@ -7,6 +7,11 @@ export default Object.freeze({
     name: 'Error',
     route: '/error',
   },
+  DASHBOARD: {
+    name: 'Dashboard',
+    route: '/dashboard',
+    exact: true,
+  },
   AUTH: {
     name: 'Auth',
     route: '/auth',
