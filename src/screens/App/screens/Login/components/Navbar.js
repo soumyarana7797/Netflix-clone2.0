@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './Navbar.css';
+import './Login.css';
+// import defaultImage from 'assets/images/netflix-logo.jpg';
+// import { require } from 'browserify'
+
 
 const Navbar = () => {
   const [show, handleShow] = useState(false)
@@ -18,13 +21,14 @@ const Navbar = () => {
   }, [])
 
   return (
-    <div className={`nav ${show && 'nav_black'}`}>
-      <div className='nav_contents'>
-        <img className='nav_logo' src="https://www.freepnglogos.com/uploads/netflix-logo-0.png" alt="" />
-
-        <img className='nav_avatar' src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="" />
+    <>
+      <div className="bckimg">
+        <img src="https://i.ibb.co/vXqDmnh/background.jpg" alt="" />
       </div>
-    </div>
+      <div className="logo">
+        <img src="https://i.ibb.co/r5krrdz/logo.png" alt="" />
+      </div>
+    </>
   );
 };
 

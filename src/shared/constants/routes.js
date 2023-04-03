@@ -12,6 +12,11 @@ export default Object.freeze({
     route: '/dashboard',
     exact: true,
   },
+  LOGIN: {
+    name: 'Login',
+    route: '/login',
+    exact: true,
+  },
   AUTH: {
     name: 'Auth',
     route: '/auth',
